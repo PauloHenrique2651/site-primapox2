@@ -1,0 +1,101 @@
+/* Proposta 02 — inspirada na Albruga: industrial, direta, focada na capacidade produtiva.
+   Tokens remapeiam os estilos herdados das páginas internas (globals.css). */
+:root {
+  --navy-deep: #0b1650;
+  --mist: #f4f6fb;
+  --graphite: #1c2129;
+  --zinc: #eceef1;
+  --brand-blue: #002398;
+  --brand-red: #fd0100;
+
+  --navy: var(--graphite);
+  --navy-2: #2a313b;
+  --blue: var(--brand-blue);
+  --red: #e00000;
+  --red-dark: #b80000;
+  --paper: var(--zinc);
+  --ink: #232a33;
+  --line: rgba(28, 33, 41, .18);
+  --focus: var(--brand-blue);
+
+  --display: var(--font-display), "Arial Narrow", sans-serif;
+  --body: var(--font-body), "Segoe UI", Arial, sans-serif;
+  --mono: var(--font-display), "Arial Narrow", sans-serif;
+
+  --header-h: 134px;
+  --shell: min(90vw, 1360px);
+  --type-hero: clamp(2.8rem, 5.6vw, 5.2rem);
+  --type-section: clamp(2.2rem, 3.6vw, 3.4rem);
+  --type-card: clamp(1.5rem, 2vw, 1.9rem);
+}
+
+/* Slightly larger reading size across the whole site */
+html { font-size: 106.25%; }
+body { background: #fff; font-family: var(--body); color: var(--ink); line-height: 1.6; }
+main { padding-top: var(--header-h); }
+::selection { background: var(--red); }
+:focus-visible { outline-color: var(--brand-blue); }
+
+/* Labels that used the monospace face now use the condensed display face */
+.eyebrow,
+.editorial-grid__index,
+.value-grid span,
+.resin-grid span,
+.process-page__list span,
+.contact-band p,
+.solution-listing span,
+.solution-listing b,
+.application-index article > div:last-child > span,
+.gallery-filters button,
+.contact-page__details > div span,
+.quote-form label > span:first-child {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+}
+
+.editorial-grid__lead h2,
+.value-grid h3,
+.resin-grid h3,
+.process-page__list h2,
+.application-index h2,
+.contact-band h2,
+.solution-listing h2,
+.legal-copy h2,
+.process-principle p { letter-spacing: 0; line-height: .98; }
+
+.editorial-grid__copy,
+.value-grid p,
+.resin-grid p,
+.process-page__list p,
+.application-index p,
+.legal-copy p,
+.contact-page__details > p { font-size: 1.08rem; color: #46515e; }
+
+.process-principle { background: var(--red-dark); }
+
+.button { font-family: var(--display); font-size: 1.15rem; border-radius: 0 !important; }
+.text-link { font-family: var(--display); font-size: 1.1rem; border-bottom-width: 3px; border-bottom-color: var(--red); }
+.text-link--light { border-bottom-color: currentColor; }
+
+.quote-form input, .quote-form select, .quote-form textarea { font-size: 1.05rem; }
+.quote-form__submit p { font-size: .9rem; }
+.quote-form { border-top-color: var(--graphite); }
+
+.industrial-gallery__item > span { font-family: var(--display); font-size: .95rem; }
+.gallery-lightbox__caption span { font-family: var(--display); font-size: 1rem; }
+.gallery-lightbox__caption p { font-size: 1rem; }
+
+@media (max-width: 1100px) { :root { --header-h: 100px; } }
+@media (max-width: 640px) { :root { --header-h: 94px; } }
+
+/* Palette pass for inner pages: tinted blue paper instead of white */
+.content-section { background: var(--mist); }
+.value-section { background: var(--navy-deep); }
+.value-grid article { color: #fff; border-color: rgba(255,255,255,.2); }
+.value-grid h3 { color: #fff; }
+.value-grid p, .value-grid span { color: #d6ddf7; }
+.resin-section { background: #fff; }
+.contact-band { background: var(--navy-deep); }
+.process-principle { background: var(--red); }

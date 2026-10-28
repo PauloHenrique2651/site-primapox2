@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      /* Primapox hero loop — albruga. Background only: the website overlays its own headline. */
+      :root { --ground: #1c2129; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--ground); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--ground); }
+      .shot { position: absolute; inset: 0; overflow: hidden; }
+      .frame { position: absolute; inset: 0; overflow: hidden; }
+      .frame img { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="12" data-width="1920" data-height="1080" data-layout-allow-overflow>
+      <div id="albruga-shot-0" class="clip shot" data-start="0" data-duration="12" data-track-index="0" style="z-index:1">
+        <div class="frame" id="albruga-shot-0-frame"><img id="albruga-shot-0-img" src="assets/photo-poster.jpg" alt="" /></div>
+      </div>
+      <div id="albruga-shot-1" class="clip shot" data-start="1.2" data-duration="10.8" data-track-index="1" style="z-index:2">
+        <div class="frame" id="albruga-shot-1-frame"><img id="albruga-shot-1-img" src="assets/photo-31.jpg" alt="" /></div>
+      </div>
+      <div id="albruga-shot-2" class="clip shot" data-start="3.6" data-duration="8.4" data-track-index="2" style="z-index:3">
+        <div class="frame" id="albruga-shot-2-frame"><img id="albruga-shot-2-img" src="assets/photo-32.jpg" alt="" /></div>
+      </div>
+      <div id="albruga-shot-3" class="clip shot" data-start="6" data-duration="6" data-track-index="3" style="z-index:4">
+        <div class="frame" id="albruga-shot-3-frame"><img id="albruga-shot-3-img" src="assets/photo-11.jpg" alt="" /></div>
+      </div>
+      <div id="albruga-shot-4" class="clip shot" data-start="8.4" data-duration="3.6" data-track-index="4" style="z-index:5">
+        <div class="frame" id="albruga-shot-4-frame"><img id="albruga-shot-4-img" src="assets/photo-27.jpg" alt="" /></div>
+      </div>
+      <div id="albruga-shot-5" class="clip shot" data-start="10.8" data-duration="1.2" data-track-index="5" style="z-index:6">
+        <div class="frame" id="albruga-shot-5-frame"><img id="albruga-shot-5-img" src="assets/photo-poster.jpg" alt="" /></div>
+      </div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#albruga-shot-0-img", { scale: 1.14, xPercent: -3, yPercent: 0 }, { scale: 1.14, xPercent: 3, yPercent: 0, duration: 4.8, ease: "none" }, 0);
+      tl.fromTo("#albruga-shot-1-img", { scale: 1.16, xPercent: 3, yPercent: 0 }, { scale: 1.16, xPercent: -3, yPercent: 0, duration: 4.8, ease: "none" }, 1.2);
+      tl.fromTo("#albruga-shot-1-frame", { opacity: 0 }, { opacity: 1, duration: 1.2, ease: "sine.inOut" }, 1.2);
+      tl.fromTo("#albruga-shot-2-img", { scale: 1.14, xPercent: -3, yPercent: 1 }, { scale: 1.14, xPercent: 3, yPercent: -1, duration: 4.8, ease: "none" }, 3.6);
+      tl.fromTo("#albruga-shot-2-frame", { opacity: 0 }, { opacity: 1, duration: 1.2, ease: "sine.inOut" }, 3.6);
+      tl.fromTo("#albruga-shot-3-img", { scale: 1.16, xPercent: 3, yPercent: 0 }, { scale: 1.16, xPercent: -3, yPercent: 0, duration: 4.8, ease: "none" }, 6);
+      tl.fromTo("#albruga-shot-3-frame", { opacity: 0 }, { opacity: 1, duration: 1.2, ease: "sine.inOut" }, 6);
+      tl.fromTo("#albruga-shot-4-img", { scale: 1.14, xPercent: -3, yPercent: 0 }, { scale: 1.14, xPercent: 3, yPercent: 0, duration: 3.6, ease: "none" }, 8.4);
+      tl.fromTo("#albruga-shot-4-frame", { opacity: 0 }, { opacity: 1, duration: 1.2, ease: "sine.inOut" }, 8.4);
+      tl.fromTo("#albruga-shot-5-img", { scale: 1.14, xPercent: -3, yPercent: 0 }, { scale: 1.14, xPercent: -3, yPercent: 0, duration: 1.2, ease: "none" }, 10.8);
+      tl.fromTo("#albruga-shot-5-frame", { opacity: 0 }, { opacity: 1, duration: 1.2, ease: "sine.inOut" }, 10.8);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
