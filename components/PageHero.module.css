@@ -68,3 +68,4 @@
 @media (max-width: 800px) {
   .grid { grid-template-columns: 1fr; min-height: 0; padding-block: 3.5rem 2.5rem; }
 }
+.aside:empty { display: none; }

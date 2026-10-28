@@ -12,8 +12,8 @@ export function PageHero({ eyebrow, title, copy, marker, image }: { eyebrow: str
           <h1>{title}</h1>
         </div>
         <div className={styles.aside}>
-          <span>{marker}</span>
-          <p>{copy}</p>
+          {marker && <span>{marker}</span>}
+          {copy && <p>{copy}</p>}
         </div>
       </div>
     </section>
