@@ -413,3 +413,20 @@
   @keyframes hero-lift { to { translate: 0 -14vh; opacity: .15; } }
 }
 @media (prefers-reduced-motion: reduce) { .heroContent { animation: none; } }
+
+/* ---------- Legacy-text layout adjustments ---------- */
+.hero h1 { max-width: 14ch; font-size: clamp(2.6rem, 7vw, 6.8rem); }
+.capacity dl { grid-template-columns: repeat(5, 1fr); }
+.sloganLabel { margin: 0 0 .75rem; color: #ffd0d0; font: 800 1.2rem/1 var(--font-display); letter-spacing: .04em; }
+.slogan h2 { text-transform: none; }
+.sloganGrid li { text-transform: none; }
+.railThree { grid-template-columns: repeat(3, 1fr); }
+.asideText { margin: 1rem 0 1.25rem; color: #4a5562; font-size: 1.02rem; line-height: 1.6; }
+.benefitList { grid-template-columns: repeat(2, 1fr) !important; gap: 0 2.5rem !important; }
+.benefitList li { padding: 1rem 0 !important; border-top: 1px solid rgba(255,255,255,.18) !important; color: #fff; font: 500 1.12rem/1.5 var(--font-body) !important; text-transform: none !important; }
+.sectionLead { max-width: 640px; margin: -1rem 0 2rem; color: #4a5562; font-size: 1.1rem; }
+.appGridFive { grid-template-columns: repeat(5, 1fr); }
+.appGridFive h3 { text-transform: none; }
+.quoteGrid > div:first-child p { margin: 0 0 1rem; }
+@media (max-width: 1100px) { .capacity dl { grid-template-columns: repeat(3, 1fr); } .appGridFive { grid-template-columns: 1fr 1fr; } .railThree { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .capacity dl, .benefitList, .appGridFive { grid-template-columns: 1fr !important; } }

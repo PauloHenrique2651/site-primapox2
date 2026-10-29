@@ -9,7 +9,7 @@ import styles from "./SiteHeader.module.css";
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const quoteHref = pathname === "/" ? "#orcamento" : "/contato#orcamento";
+  const quoteHref = "/contato";
   const { open, setOpen, close, scrolled, menu, toggle } = useHeaderState();
 
   return (
@@ -20,9 +20,8 @@ export function SiteHeader() {
           {navigation.map((item) => (
             <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>
           ))}
-          <Link href="/galeria" aria-current={pathname === "/galeria" ? "page" : undefined}>Galeria</Link>
         </nav>
-        <a className={styles.cta} href={quoteHref}>Solicitar orçamento</a>
+        <a className={styles.cta} href={quoteHref}>Fale Conosco</a>
         <button ref={toggle} className={styles.toggle} type="button" aria-expanded={open} aria-controls="menu-mobile" onClick={() => setOpen(!open)}>
           <span className={styles.bars} aria-hidden="true"><i /><i /></span>
           <span className={styles.toggleLabel}>{open ? "Fechar" : "Menu"}</span>
@@ -30,10 +29,10 @@ export function SiteHeader() {
       </div>
       <div ref={menu} className={styles.menu} id="menu-mobile" hidden={!open}>
         <nav className="shell" aria-label="Navegação mobile">
-          {[...navigation, { label: "Galeria", href: "/galeria" }, { label: "Contato", href: "/contato" }].map((item) => (
+          {navigation.map((item) => (
             <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined} onClick={close}>{item.label}</Link>
           ))}
-          <a className={styles.menuCta} href={quoteHref} onClick={close}>Solicitar orçamento</a>
+          <a className={styles.menuCta} href={quoteHref} onClick={close}>Fale Conosco</a>
           <a className={styles.menuMail} href={`mailto:${company.email}`}>{company.email}</a>
         </nav>
       </div>
