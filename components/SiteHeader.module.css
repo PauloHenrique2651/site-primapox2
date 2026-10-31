@@ -27,7 +27,7 @@
 .header[data-scrolled="true"] .inner { min-height: 80px; }
 
 /* The official logo sits on a white plate, as on the legacy primapox.com header */
-.brand { padding: 7px 12px; background: #fff; border: 1px solid #b9c4e8; border-radius: 8px; box-shadow: 0 4px 14px rgba(0, 0, 0, .25); box-sizing: content-box; }
+.brand { padding: 0; background: none; border: 0; box-shadow: none; }
 
 .nav { display: flex; justify-content: center; gap: clamp(.9rem, 1.6vw, 1.9rem); white-space: nowrap; }
 

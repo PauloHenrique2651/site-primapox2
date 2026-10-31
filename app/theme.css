@@ -2,6 +2,7 @@
    fotografia industrial, títulos 600–700 em caixa normal, botões com contorno de 2px e raio 3px.
    As cores da marca Primapox entram nos detalhes. Tokens remapeiam os estilos das páginas internas. */
 :root {
+  --footer-bg: #3a3a3a; --form-bg: #f4f4f4; --form-button: #000;
   --font-display: var(--font-montserrat);
   --font-body: var(--font-montserrat);
   --black: #000000;
