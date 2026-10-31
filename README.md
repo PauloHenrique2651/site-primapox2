@@ -4,7 +4,7 @@ Proposta de layout do site da **Primapox Pinturas Industriais** (pintura eletros
 
 ## Direção visual
 
-Grafite e marinho profundo com o vermelho Primapox nas ações; tipografia Big Shoulders + Public Sans; faixa de capacidade produtiva, etapas do processo penduradas num trilho aéreo (como a linha de pintura) e vídeo de abertura com a linha produtiva.
+Engenharia reversa da albruga.com.br: Montserrat, cabeçalho escuro sobre a abertura com a logo em placa branca (como no topo do primapox.com), abertura centralizada com botão de contorno, bloco preto dividido, seção clara com número grande, amostras e três colunas com ícones, faixa de foto, dois cards e "Fale Conosco" com ícones.
 
 Comum às quatro propostas:
 
@@ -14,7 +14,7 @@ Comum às quatro propostas:
 - Vídeo de abertura gerado com HyperFrames a partir das fotos reais do acervo (`public/media/hero-albruga.webm`); o projeto editável está em `hero-video/`.
 - Cards e seções surgem ao rolar, fotos com leve ajuste de escala e barra de progresso; tudo respeita "reduzir movimento".
 - Todo o texto visível é cópia literal das abas do site `primapox.com` (Home, A Primapox, Serviços, Manutenção, Galeria de Fotos e Fale Conosco), centralizado em `data/primapox.ts`; o menu segue as mesmas abas.
-- Contato por e-mail (`primapox@primapox.com`) e WhatsApp (21) 97013-0465; o formulário (campos do Fale Conosco original) prepara o e-mail no aplicativo do visitante.
+- Contato por e-mail (`primapox@primapox.com`) e telefone (21) 3448-7320; o formulário (campos do Fale Conosco original) prepara o e-mail no aplicativo do visitante.
 - Perfis de redes sociais previstos em `data/site.ts` (`socialProfiles`): só aparecem quando forem preenchidos.
 - SEO: metadados por página, dados estruturados LocalBusiness/Service, sitemap, robots e `llms.txt`.
 

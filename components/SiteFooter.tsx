@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { BrandMark } from "@/components/BrandMark";
 import { SocialLinks } from "@/components/SocialLinks";
-import { whatsappLink } from "@/data/whatsapp";
 import { company, navigation } from "@/data/site";
 import { contact, footerRights, home } from "@/data/primapox";
 import styles from "./SiteFooter.module.css";
@@ -25,7 +24,6 @@ export function SiteFooter() {
           <h2>{home.contactTitle}</h2>
           <div className={styles.links}>
             <a className={styles.mail} href={`mailto:${contact.email}`}>{contact.email}</a>
-            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">WhatsApp {company.whatsappLabel}</a>
             {contact.phoneLines.map((line) => <span key={line}>{line}</span>)}
           </div>
           <SocialLinks className={styles.social} />

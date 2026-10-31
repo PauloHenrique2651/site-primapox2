@@ -3,186 +3,111 @@ import Link from "next/link";
 import { pageMetadata } from "@/data/seo";
 import { HeroBackgroundVideo } from "@/components/HeroBackgroundVideo";
 import { LegacyContactForm } from "@/components/LegacyContactForm";
-import { PhotoGallery } from "@/components/PhotoGallery";
-import { about, contact, galleryTitle, home, services } from "@/data/primapox";
+import { about, contact, home, services } from "@/data/primapox";
 import styles from "./home.module.css";
 
 export const metadata = pageMetadata("/", "Primapox | Pintura eletrostática a pó no Rio de Janeiro", "Executamos pintura eletrostática com tinta em pó, ideais para: esquadrias, batentes, caixilhos, forros, divisórias, fachadas, telhas metálicas, coberturas, estruturas espaciais, etc.");
 
-// Every visible text comes verbatim from data/primapox.ts (legacy primapox.com).
-const [paintingFirst, paintingSecond] = services.painting.split(" A tinta em pó tem");
+// Section order follows albruga.com.br (reverse engineered); every visible text comes verbatim from data/primapox.ts.
+const [paintingFirst] = services.painting.split(" A tinta em pó tem");
+const finishes = ["/gallery/22.webp", "/gallery/5.webp", "/gallery/9.webp", "/gallery/10.webp", "/gallery/16.webp", "/gallery/13.webp", "/gallery/8.webp", "/gallery/18.webp", "/gallery/43.webp"];
 
-const capacity = [
-  { value: "6,5m", label: "peças com até 6,5m de comprimento" },
-  { value: "18 metros", label: "estufa de 18 metros de comprimento" },
-  { value: "200ºC", label: "à uma temperatura de 200ºC" },
-  { value: "60 mícrons", label: "recobrimento uniforme de aproximadamente 60 mícrons" },
-  { value: "50 À 70", label: "camadas de 50 À 70 microns" },
-];
-
-const highlights = [
-  { title: services.pretreatmentTitle, text: services.pretreatment[1], href: "/servicos" },
-  { title: services.paintingTitle, text: paintingFirst, href: "/servicos" },
-  { title: services.cureTitle, text: services.after[0], href: "/servicos" },
-  { title: "Manutenção", text: "A pintura Poliéster deve ser limpa regularmente para manter suas propriedades decorativas.", href: "/manutencao" },
-];
-
-const line = [
-  { number: "01", title: services.pretreatmentTitle, text: services.pretreatment[2] },
-  { number: "02", title: services.paintingTitle, text: `A tinta em pó tem${paintingSecond}` },
-  { number: "03", title: services.cureTitle, text: services.after[0] },
-];
-
-const materialPhotos = ["/gallery/17.webp", "/gallery/40.webp", "/gallery/44.webp", "/gallery/45.webp", "/gallery/5.webp"];
+function Icon({ name }: { name: "prep" | "paint" | "cure" | "pin" | "phone" | "mail" }) {
+  const paths = {
+    prep: <path d="M4 20h16M6 20V9l6-5 6 5v11M10 20v-6h4v6" />,
+    paint: <path d="M3 21l6-6M14.5 4.5l5 5-8 8-5-5 8-8zM12 7l5 5" />,
+    cure: <path d="M12 3c2 3 5 5 5 9a5 5 0 0 1-10 0c0-2 1-3.5 2-4.5 0 2 1 3 2 3 0-3-1-5 1-7.5z" />,
+    pin: <path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21zM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />,
+    phone: <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />,
+    mail: <path d="M3 6h18v12H3zM3 7l9 6 9-6" />,
+  };
+  return <svg className={styles.icon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>;
+}
 
 export default function HomePage() {
   return (
     <>
       <section className={styles.hero} aria-labelledby="titulo-principal">
-        <div className={styles.slides}>
-          <HeroBackgroundVideo src="/media/hero-albruga.webm" poster="/media/primapox-hero-poster.webp" className={styles.video} buttonClassName={styles.videoToggle} />
-        </div>
-        <div className={`shell ${styles.heroContent}`}>
+        <HeroBackgroundVideo src="/media/hero-albruga.webm" poster="/media/primapox-hero-poster.webp" className={styles.video} buttonClassName={styles.videoToggle} />
+        <div className={styles.heroText}>
           <h1 id="titulo-principal">{services.closing}</h1>
-          <p className={styles.tagline}>{services.sloganTitle}</p>
-          <p className={styles.lead}>{home.servicesText}</p>
-          <div className={styles.actions}>
-            <Link className={styles.primary} href="/contato">{home.contactTitle}</Link>
-            <Link className={styles.secondary} href="/servicos">{home.more}</Link>
+          <Link className={styles.outline} href="/servicos">{home.more}</Link>
+        </div>
+      </section>
+
+      <section className={styles.feature} aria-labelledby="a-primapox">
+        <div className={styles.featurePhoto}>
+          <Image src="/gallery/32.webp" alt="Linha de pintura da Primapox" fill sizes="(max-width: 900px) 100vw, 48vw" />
+          <h2 id="a-primapox"><span>{home.servicesTitle.split(" ")[0]}</span>{home.servicesTitle.split(" ").slice(1).join(" ")}</h2>
+        </div>
+        <div className={styles.featureText}>
+          <p className={styles.featureLead}>{services.sloganTitle}</p>
+          <p>{home.servicesText}</p>
+          <p>{home.aboutText}</p>
+          <div className={styles.featureActions}>
+            <Link className={styles.outline} href="/contato">{home.contactTitle}</Link>
+            <Link className={styles.outline} href="/empresa">{home.more}</Link>
           </div>
         </div>
       </section>
 
-      <section className={styles.capacity} aria-label={home.servicesTitle}>
-        <dl className="shell">
-          {capacity.map((item) => <div key={item.value}><dt>{item.value}</dt><dd>{item.label}</dd></div>)}
-        </dl>
+      <section className={styles.welcome} aria-labelledby="capacidade">
+        <div className={styles.shell}>
+          <p className={styles.bigNumber} id="capacidade">6,5m</p>
+          <p className={styles.bigLabel}>{about.paragraphs[3]}</p>
+          <ul className={styles.swatches} aria-label={home.advantages[2]}>
+            {finishes.map((src) => <li key={src}><Image src={src} alt="" fill sizes="90px" /></li>)}
+          </ul>
+          <h2 className={styles.welcomeTitle}>{home.aboutTitle}</h2>
+          <p className={styles.welcomeText}>{about.paragraphs[1]}</p>
+          <div className={styles.triad}>
+            <article><Icon name="prep" /><h3>{services.pretreatmentTitle}</h3><p>{services.pretreatment[1]}</p></article>
+            <article><Icon name="paint" /><h3>{services.paintingTitle}</h3><p>{paintingFirst}</p></article>
+            <article><Icon name="cure" /><h3>{services.cureTitle}</h3><p>{services.after[0]}</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.band} aria-hidden="true">
+        <Image src="/gallery/31.webp" alt="" fill sizes="100vw" />
       </section>
 
       <section className={styles.services} aria-labelledby="servicos">
-        <div className={`shell ${styles.split}`}>
-          <div className={styles.intro}>
-            <h2 id="servicos">{home.servicesTitle}</h2>
-            <p>{home.servicesText}</p>
-            <Link className={styles.textLink} href="/servicos">{home.more}</Link>
-          </div>
-          <ul className={styles.serviceList}>
-            {highlights.map((item) => (
-              <li key={item.title}>
-                <h3><Link href={item.href}>{item.title}</Link></h3>
-                <p>{item.text}</p>
-              </li>
+        <div className={styles.shell}>
+          <h2 id="servicos">{services.typesTitle}</h2>
+          <div className={styles.cards}>
+            {services.types.slice(0, 2).map(([name, text], index) => (
+              <article key={name}>
+                <div className={styles.cardPhoto}><Image src={index ? "/gallery/25.webp" : "/gallery/40.webp"} alt={name} fill sizes="(max-width: 800px) 90vw, 34vw" /></div>
+                <div className={styles.cardBody}>
+                  <h3>{name}</h3>
+                  <p>{text}</p>
+                  <Link className={styles.outlineDark} href="/servicos">{home.more}</Link>
+                </div>
+              </article>
             ))}
-          </ul>
+          </div>
+          <p className={styles.note}>{services.typesNote}</p>
         </div>
       </section>
 
-      <section className={styles.slogan} aria-labelledby="vantagens">
-        <div className={`shell ${styles.sloganGrid}`}>
-          <div>
-            <p className={styles.sloganLabel}>{home.advantagesTitle}</p>
-            <h2 id="vantagens">{services.sloganTitle}</h2>
-          </div>
+      <section className={styles.advantages} aria-labelledby="vantagens">
+        <div className={styles.shell}>
+          <h2 id="vantagens">{home.advantagesTitle}</h2>
           <ul>{home.advantages.map((advantage) => <li key={advantage}>{advantage}</li>)}</ul>
         </div>
       </section>
 
-      <section className={styles.structure} id="estrutura" aria-labelledby="titulo-estrutura">
-        <div className={`shell ${styles.structureTop}`}>
-          <div className={styles.structurePhoto}>
-            <Image src="/gallery/32.webp" alt="Vista da linha produtiva da Primapox" fill sizes="(max-width: 800px) 90vw, 45vw" />
+      <section className={styles.contact} aria-labelledby="fale-conosco">
+        <div className={styles.shell}>
+          <h2 id="fale-conosco">{home.contactTitle}</h2>
+          <div className={styles.contactCols}>
+            <div><Icon name="pin" /><h3>{home.locationTitle}</h3>{contact.addressLines.map((line) => <p key={line}>{line}</p>)}</div>
+            <div><Icon name="phone" /><h3>{contact.fields.phone.replace(":", "")}</h3>{contact.phoneLines.map((line) => <p key={line}>{line}</p>)}</div>
+            <div><Icon name="mail" /><h3>{contact.fields.email.replace(":", "")}</h3><p><a href={`mailto:${contact.email}`}>{contact.email}</a></p></div>
           </div>
-          <div>
-            <h2 id="titulo-estrutura">{home.aboutTitle}</h2>
-            <p>{home.aboutText}</p>
-            <p>{about.paragraphs[2]}</p>
-            <p><strong>{about.paragraphs[3]}</strong></p>
-          </div>
-        </div>
-        <div className="shell">
-          <ol className={`${styles.rail} ${styles.railThree}`}>
-            {line.map((step) => (
-              <li key={step.number}>
-                <span className={styles.hook} aria-hidden="true" />
-                <div className={styles.plate}>
-                  <span className={styles.stepNumber}>{step.number}</span>
-                  <h4>{step.title}</h4>
-                  <p>{step.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-          <Link className={`${styles.textLink} ${styles.textLinkLight}`} href="/servicos">{home.more}</Link>
-        </div>
-      </section>
-
-      <section className={styles.technology} aria-labelledby="tecnologia">
-        <div className="shell">
-          <h2 id="tecnologia">{services.typesTitle}</h2>
-          <div className={styles.resins}>
-            <article>
-              <h3>{services.types[0][0]}</h3>
-              <p>{services.types[0][1]}</p>
-            </article>
-            <article>
-              <h3>{services.types[1][0]}</h3>
-              <p>{services.types[1][1]}</p>
-            </article>
-            <aside>
-              <h3>{services.tableTitle}</h3>
-              <p className={styles.asideText}>{services.typesNote}</p>
-              <Link className={styles.textLink} href="/servicos#ficha-tecnica">{home.more}</Link>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.benefits} aria-labelledby="diferenciais">
-        <div className="shell">
-          <h2 id="diferenciais">{services.benefitsTitle}</h2>
-          <ul className={styles.benefitList}>{services.benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul>
-        </div>
-      </section>
-
-      <section className={styles.applications} aria-labelledby="aplicacoes">
-        <div className="shell">
-          <div className={styles.rowHead}>
-            <h2 id="aplicacoes">{services.materialTitle}</h2>
-            <Link className={styles.textLink} href="/servicos">{home.more}</Link>
-          </div>
-          <p className={styles.sectionLead}>{services.materialIntro}</p>
-          <div className={`${styles.appGrid} ${styles.appGridFive}`}>
-            {services.materials.map(([title, text], index) => (
-              <article key={title}>
-                <div className={styles.appPhoto}><Image src={materialPhotos[index]} alt={title} fill sizes="(max-width: 800px) 90vw, 20vw" /></div>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.gallery} aria-labelledby="acervo">
-        <div className="shell">
-          <div className={styles.rowHead}>
-            <h2 id="acervo">{galleryTitle}</h2>
-            <Link className={styles.textLink} href="/galeria">{home.more}</Link>
-          </div>
-          <PhotoGallery limit={8} />
-        </div>
-      </section>
-
-      <section className={styles.quote} aria-labelledby="titulo-orcamento">
-        <div className={`shell ${styles.quoteGrid}`}>
-          <div>
-            <h2 id="titulo-orcamento">{home.contactTitle}</h2>
-            <p>{contact.intro}</p>
-            <p className={styles.mailLabel}>{home.locationTitle}</p>
-            <p>{home.locationText}</p>
-            <a className={styles.mail} href={`mailto:${contact.email}`}>{contact.email}</a>
-          </div>
-          <div className={styles.formPanel}><LegacyContactForm /></div>
+          <p className={styles.contactIntro}>{contact.intro}</p>
+          <div className={styles.formWrap}><LegacyContactForm /></div>
         </div>
       </section>
     </>
